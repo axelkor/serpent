@@ -14,7 +14,6 @@ def serpent_en(key,file_name):
         one_of_chunks=list(chunks[i])
         for j in range(len(chunks[i])):
             one_of_chunks[j]=chunks[i][(j+32)%128]
-
         list_bits_ip.append("".join(one_of_chunks))#отримали масив з елементами по 128б для подальших перестановок
     print(list_bits_ip)
 ###злиття ключа з блоками виконується кожний з 31 кроки

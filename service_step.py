@@ -34,7 +34,7 @@ def slide(a,key):#зсув файлу а на кеу розрядів
 def xor(a,b):#виконання конкатенації
     s=''
     for j in range(len(a)):
-        s += str(int(a[j]) ^ int(b[j]))
+        s += str( (int(a[j]) and not int(b[j])) or (not int(a[j]) and int(b[j])))
     return s
 def slide_0(a,key):
     return a[key:]+'0'*key

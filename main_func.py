@@ -40,7 +40,7 @@ def key_block(list_bits,key):#key step
     for i in range(len(list_bits)):
         s = ''
         for j in range(len(list_bits[i])):
-            s += str(int(list_bits[i][j]) ^ int(key_bit[j]))
+            s += str(xor(int(list_bits[i][j]),int(key_bit[j])))
         list_key.append(s)
 
     return list_key  # before s-box-list,list 128 bit chunks
@@ -80,5 +80,6 @@ def s_box_func(list_key):
                 second_sbox=data[index_for_data+1][second_num]
 
                 sbox+=bin(first_sbox)[2:].rjust(4,'0')+bin(second_sbox)[2:].rjust(4,'0')
+                index_for_data+=2
         sbox_list.append(sbox)
     return sbox_list
