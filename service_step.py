@@ -35,7 +35,7 @@ def xor(a,b):#виконання конкатенації
     s=''
     for j in range(len(a)):
         x= str( (int(a[j]) and not int(b[j])) or (not int(a[j]) and int(b[j])))
-        if x == 1 or x == True:
+        if x == '1' or x == True:
             s += '1'
         else:
             s += '0'

@@ -41,7 +41,7 @@ def key_block(list_bits,key):#key step
         s = ''
         for j in range(len(list_bits[i])):
             x= str((int(list_bits[i][j]) and not int(key_bit[j])) or (not int(list_bits[i][j]) and int(key_bit[j])))
-            if x==1 or x==True:
+            if x=='1' or x==True:
                 s+='1'
             else:
                 s+='0'
