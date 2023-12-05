@@ -40,7 +40,11 @@ def key_block(list_bits,key):#key step
     for i in range(len(list_bits)):
         s = ''
         for j in range(len(list_bits[i])):
-            s += str(xor(int(list_bits[i][j]),int(key_bit[j])))
+            x= str((int(list_bits[i][j]) and not int(key_bit[j])) or (not int(list_bits[i][j]) and int(key_bit[j])))
+            if x==1 or x==True:
+                s+='1'
+            else:
+                s+='0'
         list_key.append(s)
 
     return list_key  # before s-box-list,list 128 bit chunks
