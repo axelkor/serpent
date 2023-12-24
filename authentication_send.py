@@ -6,14 +6,9 @@ def auto_send(key):#отримує параметром ключ для шифр
     text=file.read()#початковий текст
     leng=len(text)
 
-    file_3=open('text_random.txt','w')#очищення файлу
-    file_3.close()
-
-
-    file_3 = open('text_random.txt', 'a')
+    file_3 = open('text_random.txt', 'w')
     random_number=generator(leng)
-    file_3.write(text)#запис тексту у третій файл
-    file_3.write(random_number)#запис рандомних значень у третій файл
+    file_3.write(text+random_number)#запис тексту у третій файл
     file_3.close()
 
     encode = serpent_en(key, 'text_random.txt')#отримання закодованого тексту
