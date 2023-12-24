@@ -31,10 +31,17 @@ def to_symbol(str):#to symbol
     return text
 def slide(a,key):#зсув файлу а на кеу розрядів
     return a[key:]+a[:key]
+def slide_reverse(a,key):#зсув файлу а на кеу розрядів
+    return a[-key:]+a[:-key]
 def xor(a,b):#виконання конкатенації
     s=''
     for j in range(len(a)):
-        s += str(int(a[j]) ^ int(b[j]))
+        x = a[j]
+        d = b[j]
+        if x == d:
+            s += '0'
+        else:
+            s += '1'
     return s
 def slide_0(a,key):
     return a[key:]+'0'*key
