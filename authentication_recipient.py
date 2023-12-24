@@ -6,5 +6,4 @@ def auto_recp(key,random):#отримує параметр ключ та вип�
     text_final = ''
     for i in range(len(decode)):
         text_final += to_symbol(decode[i])
-    print(text_final[:-len(random)])
     return text_final
