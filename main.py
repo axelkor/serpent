@@ -3,6 +3,15 @@ from authentication_recipient import auto_recp as a_r
 from serpent_encode import serpent_en
 from tkinter import *
 
+
+window = Tk()
+window['bg'] = '#ffffff'
+window.title('Автентифікація')
+window.geometry('450x300')
+window.resizable(width=False, height=False)
+key = 'H9$%42Q-r9*sdkhd'
+frame = Frame(window, bg='grey')
+frame.place(relheight=1, relwidth=1)
 def add_cells():
     global random_number
     random_number = a_s(key)  # повертає рандомне значення
@@ -39,21 +48,15 @@ def get_result():
     entry4_var.set(d[-x:])
 
     if text_file==d[:-x] and text_file+random_number==d:#можна створити помилку замінивши рандом на інше
-        label7.config(text="Автентифікація пройдена")
+        label7.config(text="Автентифікація пройдена",bg="green")
     if text_file!=d[:-x]:
-        label7['text']="Текст з помилкою"
-    if text_file+random_number!=d:
-        label7['text']="Випадкове число з помилкою"
+        label7.config(text="Текст з помилкою",bg='red')
+    if random_number!=d[-x:]:
+        label7.config(text="Випадкове число з помилкою",bg="red")
+    if text_file!=d[:-x] and random_number!=d[-x:]:
+        label7.config(text="Помилка в тобі", bg="red")
 
 
-window = Tk()
-window['bg'] = '#ffffff'
-window.title('Автентифікація')
-window.geometry('450x300')
-window.resizable(width=False, height=False)
-key = 'H9$%42Q-r9*sdkhd'
-frame = Frame(window, bg='grey')
-frame.place(relheight=1, relwidth=1)
 random_number=None
 entry_var=StringVar()
 entry2_var=StringVar()
@@ -66,10 +69,13 @@ label3 = Label(frame, text="Текст автентифікації",bg='grey').
 entry1=Entry(frame,textvariable=entry_var).grid(row=2, column=0,sticky="ew")#Введення тексту А
 label4 = Label(frame, text="Рандомне значення",bg='grey').grid(row=3, column=0,sticky="ew")
 entry2=Entry(frame,textvariable=entry2_var).grid(row=4, column=0,sticky="ew")#Рандомне число
-label7 = Label(frame, text="Автентифікація").grid(row=6,column=0,columnspan=2,sticky='ew')#Цей віджет буде в кінці кінців
 
-button1=Button(frame,text='Заповнення всіх комірок',bg='grey',command=add_cells).grid(row=5, column=0,sticky="ew")
-button2=Button(frame,text='Розшифрування значень',bg='grey',command=get_result).grid(row=5, column=1,sticky="ew")
+label7 = Label(frame, text="Автентифікація")
+label7.grid(row=6,column=0,columnspan=2,sticky='ew')#Цей віджет буде в кінці кінців
+button1=Button(frame,text='Заповнення всіх комірок',bg='grey',command=add_cells)
+button1.grid(row=5, column=0,sticky="ew")
+button2=Button(frame,text='Розшифрування значень',bg='grey',command=get_result)
+button2.grid(row=5, column=1,sticky="ew")
 
 label5 = Label(frame, text="Розшифрований текст",bg='grey').grid(row=1, column=1,sticky="ew")
 label6 = Label(frame, text="Отримане значення",bg='grey').grid(row=3, column=1,sticky="ew")
