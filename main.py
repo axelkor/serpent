@@ -19,16 +19,18 @@ def comparassion():#Зробити порівняння двох введени�
     if len(entry6_var.get())!=16:
         label7.config(text="Ключ на стороні В не дорівнює 128 бітам", bg="red")
         return
-    text=a_r(entry6_var.get())
-
-    if text_file==d[:-x] and text_file+random_number==d:#можна створити помилку замінивши рандом на інше
+    d=a_r(entry6_var.get())#отримане значення на стороні В
+    text_from_entry_1=entry_var.get()
+    random_number=entry2_var.get()
+    x=len(random_number)
+    if text_from_entry_1+random_number==d:#можна створити помилку замінивши рандом на інше
         label7.config(text="Автентифікація пройдена",bg="green")
-    if text_file!=d[:-x]:
+    if text_from_entry_1!=d[:-x]:
         label7.config(text="Текст з помилкою",bg='red')
     if random_number!=d[-x:]:
         label7.config(text="Випадкове число з помилкою",bg="red")
-    if text_file!=d[:-x] and random_number!=d[-x:]:
-        label7.config(text="Помилка в тобі", bg="red")
+    if text_from_entry_1!=d[:-x] and random_number!=d[-x:]:
+        label7.config(text="Помилка ключа/текст+випадкове число", bg="red")
 def add_cells():
     global random_number
     file = open('text.txt', 'r')  # для копіювання тексту
